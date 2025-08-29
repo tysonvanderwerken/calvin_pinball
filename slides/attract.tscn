@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgxv8u5aijhvo"]
+
+[ext_resource type="Script" uid="uid://d4egom4in1t3u" path="res://addons/mpf-gmc/classes/mpf_slide.gd" id="1_co8q6"]
+
+[node name="Attract" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_co8q6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 1024.0
+color = Color(0.247059, 0.407843, 0.733333, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 1024.0
+text = "calvin_piball test"
+horizontal_alignment = 1
+vertical_alignment = 1

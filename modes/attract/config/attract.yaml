@@ -5,3 +5,8 @@
 
 slide_player:
   mode_attract_started: attract
+
+sound_plater:
+  mode_attract_started:
+    intro_music:
+      bus: music
