@@ -1,0 +1,113 @@
+#config_version=6
+
+modes:
+ - mode1
+
+segment_displays:
+  display1:
+    number: 1
+    size: 10
+  display2:
+    number: 2
+  display3:
+    number: 3
+  display4:
+    number: 1
+    size: 10
+    integrated_commas: true
+  display5:
+    number: 1
+    size: 10
+    integrated_dots: true
+  display_stack:
+    number: 4
+    update_method: stack
+  display_replace:
+    number: 5
+    update_method: replace
+
+segment_display_player:
+  test_event1:
+    display1: "HELLO1"
+    display2:
+      text: "HELLO2"
+  test_event2:
+    display1:
+      action: remove
+  test_event3:
+    display2:
+      action: remove
+
+  test_flashing:
+    display1:
+      action: flash
+  test_no_flashing:
+    display1:
+      action: no_flash
+
+  test_score:
+    display1:
+      text: "1: {players[0].score:d}"
+    display2:
+      text: "2: {machine.test:d}"
+
+  test_score_two_player:
+    display1:
+      text: "{players[0].score:d}"
+    display2:
+      text: "{players[1].score:d}"
+
+  test_flash:
+    display1:
+      priority: 10
+      key: flash
+      text: "TEST"
+      expire: 2s
+
+  test_update_events:
+    display3:
+      text: "UPDATE"
+      color: FF0000
+
+  test_transition:
+    display1:
+      priority: 15
+      key: transition
+      text: "  SCROLL  "
+      color: red
+      transition:
+        type: push
+        direction: right
+      transition_out:
+        type: push
+        direction: left
+      expire: 2s
+
+  test_transition_2:
+    display1:
+      priority: 15
+      key: transition
+      text: "0123456789"
+      transition:
+        type: split
+        mode: wipe
+        direction: out
+
+  test_transition_3:
+    display1:
+      priority: 15
+      key: transition
+      text: "ABCDEFGHIJ"
+      transition:
+        type: uncover
+        direction: right
+
+  test_set_color_to_white:
+    display3:
+      action: set_color
+      color: white
+
+  test_set_color_to_red:
+    display3:
+      action: set_color
+      color: red

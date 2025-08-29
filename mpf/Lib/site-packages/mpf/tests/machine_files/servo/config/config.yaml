@@ -1,0 +1,22 @@
+#config_version=6
+
+servos:
+    limited_servo:
+        number: 1
+        servo_min: 0.2
+        servo_max: 0.8
+    test_servo:
+        number: 2
+        reset_position: 0.5
+        reset_events: test_reset
+        positions:
+            0.0: test_00
+            0.1: test_01
+            1.0: test_10
+    test_servo_with_timeout:
+        number: 3
+        stop_timeout_after_last_move: 2s
+        positions:
+            0.0: test_20
+            0.5: test_25
+            1.0: test_30

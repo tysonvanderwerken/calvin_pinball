@@ -1,0 +1,124 @@
+Metadata-Version: 2.4
+Name: mpf
+Version: 0.80.0.dev9
+Summary: The Mission Pinball Framework (MPF)
+Author-email: The Mission Pinball Framework Team <brian@missionpinball.org>
+License: MIT
+Project-URL: homepage, https://missionpinball.org
+Project-URL: support-forum, https://missionpinball.org/community/
+Keywords: pinball
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Artistic Software
+Classifier: Topic :: Games/Entertainment :: Arcade
+Requires-Python: <3.13,>=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+License-File: AUTHORS.md
+Requires-Dist: asciimatics==1.15.0
+Requires-Dist: packaging==23.2
+Requires-Dist: prompt_toolkit==3.0.43
+Requires-Dist: psutil==5.9.8
+Requires-Dist: pyserial==3.5
+Requires-Dist: pyserial-asyncio==0.6
+Requires-Dist: ruamel.yaml==0.18.6
+Requires-Dist: setuptools~=72.2.0
+Requires-Dist: sortedcontainers==2.4.0
+Requires-Dist: terminaltables==3.1.10
+Provides-Extra: crash-reporter
+Requires-Dist: requests==2.28.2; extra == "crash-reporter"
+Provides-Extra: irc
+Requires-Dist: irc==19.0.1; extra == "irc"
+Provides-Extra: linux-i2c
+Requires-Dist: smbus2_asyncio==0.0.5; extra == "linux-i2c"
+Provides-Extra: osc
+Requires-Dist: python-osc==1.8.3; extra == "osc"
+Provides-Extra: pin2dmd
+Requires-Dist: pyusb==1.1.0; extra == "pin2dmd"
+Provides-Extra: zedmd
+Requires-Dist: numpy>=1.7.0; extra == "zedmd"
+Provides-Extra: rpi
+Requires-Dist: apigpio-mpf==0.0.4; extra == "rpi"
+Provides-Extra: uvloop
+Requires-Dist: uvloop==0.19.0; extra == "uvloop"
+Provides-Extra: vpe
+Requires-Dist: grpcio_tools==1.34.0; extra == "vpe"
+Requires-Dist: grpcio==1.34.0; extra == "vpe"
+Requires-Dist: protobuf==3.14.0; extra == "vpe"
+Provides-Extra: all
+Requires-Dist: prompt_toolkit==3.0.43; extra == "all"
+Requires-Dist: asciimatics==1.15.0; extra == "all"
+Requires-Dist: terminaltables==3.1.10; extra == "all"
+Requires-Dist: requests==2.28.2; extra == "all"
+Requires-Dist: irc==19.0.1; extra == "all"
+Requires-Dist: smbus2_asyncio==0.0.5; extra == "all"
+Requires-Dist: python-osc==1.8.3; extra == "all"
+Requires-Dist: pyusb==1.1.0; extra == "all"
+Requires-Dist: apigpio-mpf==0.0.4; extra == "all"
+Requires-Dist: grpcio_tools==1.34.0; extra == "all"
+Requires-Dist: grpcio==1.34.0; extra == "all"
+Requires-Dist: protobuf==3.14.0; extra == "all"
+Requires-Dist: uvloop==0.19.0; extra == "all"
+Requires-Dist: numpy>=1.7.0; extra == "all"
+Dynamic: license-file
+
+Mission Pinball Framework (MPF)
+===============================
+
+<img align="center" height="146" src="https://missionpinball.org/latest/images/mpf-logo-full.png"/>
+
+<em>...Let's build a pinball machine!</em>
+
+What is Mission Pinball Framework?
+----------------------------------
+
+Mission Pinball Framework (MPF) is open source, cross-platform software for powering real pinball
+machines. MPF is a community-developed project released under the MIT license. It's supported by volunteers in their spare time.
+
+[![Coverage Status](https://coveralls.io/repos/missionpinball/mpf/badge.svg?branch=dev&service=github)](https://coveralls.io/github/missionpinball/mpf?branch=dev)
+[![Test Status](https://github.com/missionpinball/mpf/actions/workflows/run_tests.yml/badge.svg)](https://github.com/missionpinball/mpf/actions/workflows/run_tests.yml)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1687/badge)](https://bestpractices.coreinfrastructure.org/projects/1687)
+
+Visit the MPF project homepage at https://missionpinball.org. Additional related projects exist as part of the MPF ecosystem, including the "MPF Monitor" which is a graphical application that lets you simulate pinball hardware, and "MPF-MC" which is a media controller which provides graphics and sounds for pinball machines.
+
+Documentation
+-------------
+
+* User Docs (installation, tutorials, & reference): https://missionpinball.org
+
+Support
+-------
+
+MPF is an open source community project which has no official support. Some MPF users participate in the MPF-Users Google group or GitHub Discussion. Links [here](https://missionpinball.org/latest/community/).
+
+Individual pinball hardware companies may provide additional support for users of their hardware, often via their own Slack, Discord, or other chat groups. If you get stuck, you can ask for help in the MPF-users group, or you reach out to your hardware provider.
+
+Maintenance, Pull Requests, & Bug Fixes
+---------------------------------------
+
+As a community project, we welcome pull requests and bug fixes. However, we do not have the resources to provide support for MPF. If you are interested in becoming a maintainer, please contact us at brian@missionpinball.org.
+
+Bugs or other issues related to MPF itself can be posted to the [MPF Discussions page on GitHub](https://missionpinball.org/latest/community/).
+
+Contributing
+------------
+
+Individual pinball hardware makers are responsible for their own platform interface maintenance and contributions.
+
+MPF is a passion project created and maintained by volunteers. If you're a Python coder, documentation writer, or pinball maker, feel free to make a change and submit a pull request. For more information about contributing see the [Contributing Code](https://missionpinball.org/latest/about/contributing_to_mpf/)
+and [Contributing Documentation](https://missionpinball.org/latest/about/help_docs/) pages.
+
+License
+-------
+
+MPF and related projects are released under the MIT License. Refer to the LICENSE file for details. Docs are released under Creative Commons CC BY 4.0.

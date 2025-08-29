@@ -1,0 +1,30 @@
+#config_version=6
+
+game:
+    balls_per_game: 1
+
+player_vars:
+    score:
+        initial_value: 0
+    my_var: 
+        initial_value: 0
+
+auditor:
+    events:
+        - test_event1
+        - test_event2
+    player:
+        - my_var
+        - optional_var
+
+modes:
+    - base
+
+switches:
+    s_test:
+        number:
+    s_start:
+        number:
+        tags: start
+    s_ball:
+        number:

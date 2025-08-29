@@ -1,0 +1,65 @@
+#config_version=6
+mode:
+  code: mpf.modes.high_score.code.high_score.HighScore
+  priority: 1500
+  start_events: game_ending, start_high_score
+  game_mode: False
+  use_wait_queue: true
+
+# Instructions on how to use this mode:
+# https://missionpinball.org/latest/game_logic/high_scores
+
+high_score:
+  enter_initials_timeout: 60
+  award_slide_display_time: 4s
+  categories:
+    score:
+      - GRAND CHAMPION
+      - HIGH SCORE 1
+      - HIGH SCORE 2
+      - HIGH SCORE 3
+      - HIGH SCORE 4
+  defaults:
+    score:
+      - BRI: 4242
+      - GHK: 2323
+      - JK: 1337
+      - QC: 42
+      - MPF: 23
+
+event_player:
+  sw_left_flipper_active:
+    text_input:
+      action: left
+  sw_right_flipper_active:
+    text_input:
+      action: right
+  sw_start_active:
+    text_input:
+      action: select
+
+slide_player:
+  high_score_enter_initials:
+    high_score:
+        action: play
+  #   high_score_award_display:
+  #       action: remove
+  #   #Make sure to remove any slides you add under this high_score_enter_initials slide, or it will continue to
+  #   #show the award slide instead of initials for another player that also earned a high score.
+  #   score_award_display:
+  #       action: remove
+  # high_score_award_display:
+  #   high_score_award_display:
+  #       action: play
+  #   high_score_enter_initials:
+  #       action: remove
+  # #This is used to show the slide for a specific award and show additional parameters.  This can include any
+  # #static lables as well as dynamic player and machine variables.
+  # #You will need to generate this block again and swap the name for any subsequent categories that you want
+  # #to show unique additional values.
+  # score_award_display:
+  #   score_award_display:
+  #       action: play
+  #       priority: 1
+  #   high_score_enter_initials:
+  #       action: remove

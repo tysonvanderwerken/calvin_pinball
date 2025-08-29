@@ -1,0 +1,146 @@
+syntax = "proto3";
+
+package mpf.vpe;
+
+service MpfHardwareService {
+  rpc Start(MachineState) returns (stream Commands);
+  rpc GetMachineDescription(EmptyRequest) returns (MachineDescription);
+  rpc SendSwitchChanges(stream SwitchChanges) returns (EmptyResponse);
+  rpc Quit(QuitRequest) returns (EmptyResponse);
+}
+
+message EmptyRequest {}
+message EmptyResponse {}
+message QuitRequest {}
+
+message MachineState {
+  map<string, bool> initial_switch_states = 1;
+}
+
+message SwitchDescription {
+  string name = 1;
+  string hardware_number = 2;
+  string switch_type = 3;   // NO or NC
+}
+
+message CoilDescription {
+  string name = 1;
+  string hardware_number = 2;
+}
+
+message LightDescription {
+  string name = 1;
+  string hardware_channel_number = 2;
+  string hardware_channel_color = 3;
+}
+
+message DmdDescription {
+  enum ColorMapping {
+    BW = 0;
+    RGB = 1;
+  }
+
+  string name = 1;
+  ColorMapping color_mapping = 2;
+  uint32 width = 3;
+  uint32 height = 4;
+}
+
+message SegmentDisplayDescription {
+  string name = 1;
+  uint32 width = 2;
+}
+
+message MachineDescription {
+  repeated SwitchDescription switches = 1;
+  repeated CoilDescription coils = 2;
+  repeated LightDescription lights = 3;
+  repeated DmdDescription dmds = 4;
+  repeated SegmentDisplayDescription segment_displays = 5;
+}
+
+// Platform streams switch changes to MPF
+message SwitchChanges {
+  string switch_number = 1;
+  bool switch_state = 2;
+  uint64 change_time = 3;
+}
+
+message SetDmdFrameRequest {
+  string name = 1;
+  bytes frame = 2;
+  float brightness = 3;
+}
+
+message SetSegmentDisplayFrameRequest {
+  message SegmentDisplayColor {
+    float r = 1;
+    float g = 2;
+    float b = 3;
+  }
+  string name = 1;
+  bytes frame = 2;
+  repeated SegmentDisplayColor colors = 3;
+}
+
+message Commands {
+  oneof command {
+    FadeLightRequest fade_light = 1;
+    PulseCoilRequest pulse_coil = 2;
+    EnableCoilRequest enable_coil = 3;
+    DisableCoilRequest disable_coil = 4;
+    ConfigureHardwareRuleRequest configure_hardware_rule = 5;
+    RemoveHardwareRuleRequest remove_hardware_rule = 6;
+    SetDmdFrameRequest dmd_frame_request = 7;
+    SetSegmentDisplayFrameRequest segment_display_frame_request = 8;
+  }
+}
+
+message FadeLightRequest {
+  // This is up to discussion
+  message ChannelFade {
+    string light_number = 1;
+    float target_brightness = 2;
+  }
+  uint32 common_fade_ms = 1;
+  repeated ChannelFade fades = 2;
+}
+
+// Pulse a coil
+// If it has been enabled before disable it afterwards
+message PulseCoilRequest {
+  string coil_number = 1;
+  uint32 pulse_ms = 2;
+  float pulse_power = 3;
+}
+
+// Enable a coil
+// Not sure if hold_power is simulated in VPE or if we should remove it
+message EnableCoilRequest {
+  string coil_number = 1;
+  uint32 pulse_ms = 2;
+  float pulse_power = 3;
+  float hold_power = 4;   // Probably not important for VPE. Can a ball be knocked off from a magnet?
+}
+
+// Disable a coil
+message DisableCoilRequest {
+  string coil_number = 1;
+}
+
+// Configure a minimal hardware rule to hide latency from pops/slings/flippers
+// Dual-wound, EOS, cut-off rules and more are ignored here
+// Not sure if hold_power is simulated in VPE or if we should remove it
+message ConfigureHardwareRuleRequest {
+  string coil_number = 1;
+  string switch_number = 2;
+  uint32 pulse_ms = 3;
+  float pulse_power = 4;
+  float hold_power = 5;   // Probably not important for VPE because knocking down a flipper will probably not happen there
+}
+
+// Remove a rule between switch and coil
+message RemoveHardwareRuleRequest {
+  string coil_number = 1;
+  string switch_number = 2;
+}

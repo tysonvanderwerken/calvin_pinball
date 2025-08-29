@@ -1,0 +1,19 @@
+#config_version=6
+
+machine_vars:
+  test1:
+    initial_value: 4
+    value_type: int
+    persist: True
+  test2:
+    initial_value: '5'
+    value_type: str
+    persist: True
+  test3:
+    initial_value: 6
+    value_type: int
+    persist: False
+
+event_player:
+  "{machine.time.second >= 30}": test_event3
+  "{machine.time.second >= 40}": test_event4

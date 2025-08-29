@@ -1,0 +1,6 @@
+#config_version=6
+config: config.yaml
+
+modes:
+    - default
+    - blocking

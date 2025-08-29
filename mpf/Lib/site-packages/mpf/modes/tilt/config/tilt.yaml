@@ -1,0 +1,40 @@
+#config_version=6
+mode:
+  code: mpf.modes.tilt.code.tilt.Tilt
+  priority: 1000000
+  start_events: machine_reset_phase_3
+  game_mode: False
+  stop_on_ball_end: False
+
+# Instructions on how to use this mode:
+# https://missionpinball.org/latest/game_logic/tilt
+
+tilt:
+  tilt_warning_switch_tag: tilt_warning
+  tilt_switch_tag: tilt
+  slam_tilt_switch_tag: slam_tilt
+  warnings_to_tilt: 3
+  multiple_hit_window: 300ms
+  settle_time: 5s
+  tilt_warnings_player_var: tilt_warnings
+
+slide_player:
+  tilt_warning_1:
+    tilt:
+      expire: 1s
+      tokens:
+        text: WARNING
+  tilt_warning_2:
+    tilt:
+      expire: 1s
+      tokens:
+        text: DANGER
+  tilt:
+    tilt:
+      action: play
+      tokens:
+        text: TILT
+
+  tilt_clear:
+    tilt:
+      action: remove

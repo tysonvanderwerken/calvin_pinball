@@ -1,0 +1,166 @@
+#config_version=6
+
+hardware:
+  segment_displays: light_segment_displays
+
+lights:
+  segment1_a:
+    number:
+  segment1_b:
+    number:
+  segment1_c:
+    number:
+  segment1_d:
+    number:
+  segment1_e:
+    number:
+  segment1_f:
+    number:
+  segment1_g:
+    number:
+  segment2_a:
+    number:
+  segment2_b:
+    number:
+  segment2_c:
+    number:
+  segment2_d:
+    number:
+  segment2_e:
+    number:
+  segment2_f:
+    number:
+  segment2_g:
+    number:
+  segment3_x0:
+    number:
+  segment3_x1:
+    number:
+  segment3_x2:
+    number:
+  segment3_x3:
+    number:
+  segment4_x0:
+    number:
+  segment4_x1:
+    number:
+  segment4_x2:
+    number:
+  segment4_x3:
+    number:
+  segment5_a:
+    number:
+  segment5_b:
+    number:
+  segment5_c:
+    number:
+  segment5_d:
+    number:
+  segment5_e:
+    number:
+  segment5_f:
+    number:
+  segment5_g:
+    number:
+  segment5_h:
+    number:
+
+neoseg_displays:
+  neoSeg_0:
+    start_channel: 0-0-0
+    size: 8digit
+    light_template:
+      type: w
+      subtype: led
+  neoSeg_1:
+    start_channel: 0-0-120
+    size: 8digit
+    light_template:
+      type: w
+      subtype: led
+
+segment_displays:
+  display1:
+    number: 1
+    size: 4
+    platform_settings:
+      lights:
+        - a: segment1_a
+          b: segment1_b
+          c: segment1_c
+          d: segment1_d
+          e: segment1_e
+          f: segment1_f
+          g: segment1_g
+        - a: segment2_a
+          b: segment2_b
+          c: segment2_c
+          d: segment2_d
+          e: segment2_e
+          f: segment2_f
+          g: segment2_g
+      type: 7segment
+  display2:
+    number: 2
+    size: 4
+    platform_settings:
+      lights:
+        - x0: segment3_x0
+          x1: segment3_x1
+          x2: segment3_x2
+          x3: segment3_x3
+        - x0: segment4_x0
+          x1: segment4_x1
+          x2: segment4_x2
+          x3: segment4_x3
+      type: bcd
+  display3:
+    number: 4
+    size: 1
+    platform_settings:
+      lights:
+        - a: segment5_a
+          b: segment5_b
+          c: segment5_c
+          d: segment5_d
+          e: segment5_e
+          f: segment5_f
+          g: segment5_g
+          h: segment5_h
+      type: 8segment
+  neoSegTop:
+    number: 1
+    size: 16
+    integrated_dots: true
+    use_dots_for_commas: true
+    default_transition_update_hz: 30
+    platform_settings:
+      light_groups:
+         - neoSeg_0
+         - neoSeg_1
+      type: 14segment
+
+segment_display_player:
+  show_1337:
+    display1:
+      text: "1337"
+  display1_color_red_green_blue_yellow:
+    display1:
+      action: set_color
+      color: [red, green, blue, yellow]
+  display1_color_white:
+    display1:
+      action: set_color
+      color: [white]
+  show_88:
+    display1:
+      text: "88"
+  show_11:
+    display1:
+      text: "11"
+  remove_text_display1:
+    display1:
+      action: remove
+  show_centered_11:
+    neoSegTop:
+      text: "       11       "

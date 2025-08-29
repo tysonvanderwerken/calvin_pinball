@@ -1,0 +1,20 @@
+#config_version=6
+
+mode_settings:
+  keep_multiplier: True
+  bonus_entries:
+      - entry: bonus_ramps
+        score: 1000
+        player_score_entry: ramps
+        reset_player_score_entry: True
+        skip_if_zero: false
+      - entry: bonus_modes
+        score: 5000
+        player_score_entry: modes
+        reset_player_score_entry: False
+      - entry: bonus_undefined_var
+        score: 5000
+        skip_if_zero: false
+        player_score_entry: undefined_var
+      - entry: bonus_static
+        score: 2000
